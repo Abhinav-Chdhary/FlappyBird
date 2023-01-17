@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
                 direction = Vector3.up * strength;
             }
         }
-        direction.y *= gravity * Time.deltaTime;
+        direction.y += gravity * Time.deltaTime;
         transform.position += direction * Time.deltaTime;
     }
 
