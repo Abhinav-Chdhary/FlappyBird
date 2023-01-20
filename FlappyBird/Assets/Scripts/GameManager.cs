@@ -4,15 +4,25 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     private int score = 0;
+    //public float rotationDuration = 1f; //adjust the rotation duration
     public Player player;
     public Text scoreText;
     public GameObject playButton;
     public GameObject gameOver;
+    //private Quaternion initialRotation; //to store initial rotation
 
     private void Awake()
     {
         Application.targetFrameRate= 60;
+        //initialRotation= transform.rotation;
         Pause();
+    }
+    private void Update()
+    {
+        //if(score%3==0 && score>0)
+        //{
+        //    player.transform.Rotate(Vector3.forward, 360f * Time.deltaTime/rotationDuration);
+        //}//barrel roll every 3 points
     }
     public void Play()
     {
@@ -39,6 +49,7 @@ public class GameManager : MonoBehaviour
     {
         gameOver.SetActive(true);
         playButton.SetActive(true);
+        //player.transform.rotation= initialRotation; //back to initial
         score = 0;
         Pause();
     }
