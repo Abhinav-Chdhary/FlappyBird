@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
     private Vector3 direction; //direction of movement of bird
     public float gravity = -9.8f; //to customize gravity
     public float strength = 5f; //strength of bird
+    public AudioSource ScoreSound;
+    public AudioSource jumpSound;
 
     private void Awake()
     {
@@ -32,6 +34,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
             direction = Vector3.up * strength;
+            jumpSound.Play();
         }
         if (Input.touchCount > 0)
         {
@@ -39,6 +42,7 @@ public class Player : MonoBehaviour
             if (touch.phase == TouchPhase.Began)
             {
                 direction = Vector3.up * strength;
+                jumpSound.Play();
             }
         }
         direction.y += gravity * Time.deltaTime;
@@ -61,6 +65,7 @@ public class Player : MonoBehaviour
         }
         else if (collision.gameObject.tag == "Scoring")
         {
+            ScoreSound.Play();
             FindObjectOfType<GameManager>().IncreaseScore();
         }
     }
