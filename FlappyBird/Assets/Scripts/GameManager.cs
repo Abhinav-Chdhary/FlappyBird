@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
         Application.targetFrameRate= 60;
         Pause();
     }
-    private void Play()
+    public void Play()
     {
         score= 0;
         scoreText.text = score.ToString();
@@ -29,9 +29,8 @@ public class GameManager : MonoBehaviour
         {
             Destroy(pipe.gameObject);
         }
-
     }
-    private void Pause()
+    public void Pause()
     {
         Time.timeScale = 0f;
         player.enabled= false;
